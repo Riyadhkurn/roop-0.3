@@ -35,7 +35,7 @@ class FaceSwapScript(scripts.Script):
     def ui(self, is_img2img):
         with gr.Accordion(f"roop {version_flag}", open=False):
             with gr.Column():
-                img = gr.inputs.Image(type="pil")
+                img = gr.Image(type="pil")
                 enable = gr.Checkbox(False, placeholder="enable", label="Enable")
                 faces_index = gr.Textbox(
                     value="0",
@@ -52,7 +52,7 @@ class FaceSwapScript(scripts.Script):
                     face_restorer_visibility = gr.Slider(
                         0, 1, 1, step=0.1, label="Restore visibility"
                     )
-                upscaler_name = gr.inputs.Dropdown(
+                upscaler_name = gr.Dropdown(
                     choices=[upscaler.name for upscaler in shared.sd_upscalers],
                     label="Upscaler",
                 )
@@ -66,12 +66,12 @@ class FaceSwapScript(scripts.Script):
                     logger.warning(
                         "You should at least have one model in models directory, please read the doc here : https://github.com/P2Enjoy/sd-webui-roop/"
                     )
-                    model = gr.inputs.Dropdown(
+                    model = gr.Dropdown(
                         choices=models,
                         label="Model not found, please download one and reload automatic 1111",
                     )
                 else:
-                    model = gr.inputs.Dropdown(
+                    model = gr.Dropdown(
                         choices=models, label="Model", default=models[0]
                     )
 
